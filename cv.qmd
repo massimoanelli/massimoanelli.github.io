@@ -1,0 +1,17 @@
+---
+title: "Curriculum Vitae"
+---
+
+[Download CV (PDF)](files/anelli-cv.pdf){.cv-button}
+
+The PDF is built from the LaTeX source in the Overleaf CV project, so it stays
+in step with the version circulated for seminars and applications.
+
+::: {.contact-block}
+**Department of Social and Political Sciences**
+Bocconi University
+Via Röntgen 1, 20136 Milano, Italy
+
+[massimo.anelli@unibocconi.it](mailto:massimo.anelli@unibocconi.it)
++39 02 5836 2513
+:::

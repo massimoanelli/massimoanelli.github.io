@@ -1,0 +1,29 @@
+---
+title: "AI & Society"
+---
+
+## Dondena AI and Society Initiative (DAISI)
+
+I direct [DAISI](https://dondena.unibocconi.eu/research-areas/welfare-state-and-taxation-unit/dondena-ai-and-society-initiative-daisi),
+launched in 2024 within the Dondena Centre for Research on Social Dynamics and
+Public Policy. The initiative studies how artificial intelligence is changing
+work, politics, and social life — and how public policy should respond.
+
+::: {.callout-note appearance="simple"}
+This page is a placeholder. Tell me what DAISI's public description should say
+and I will write it properly — the framing here is inferred from your CV, not
+from DAISI's own materials.
+:::
+
+## Bocconi AI and Society Conference
+
+I organized the first Bocconi AI and Society Conference in 2026.
+
+## Related research
+
+Work from this agenda appears on the [Research](research.qmd) page under
+*Automation, Robots, and Artificial Intelligence*, including:
+
+- **What If You See It? Workers' Perceptions of and Reactions to LLMs**
+- **Robots Replacing Trade Unions: Novel Data and Evidence from Western Europe**
+- **Individual Vulnerability to Industrial Robot Adoption Increases Support for the Radical Right**

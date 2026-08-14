@@ -1,0 +1,13 @@
+# Quarto build output
+/_site/
+/.quarto/
+
+# Generated from publications.bib by scripts/build_publications.py
+/_generated/
+
+# OneDrive / Windows cruft
+desktop.ini
+Thumbs.db
+.DS_Store
+
+**/*.quarto_ipynb

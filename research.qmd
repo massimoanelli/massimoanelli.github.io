@@ -1,0 +1,9 @@
+---
+title: "Research"
+---
+
+Working papers appear first within each area, followed by published work.
+Drafts marked *available upon request* can be obtained by
+[emailing me](mailto:massimo.anelli@unibocconi.it).
+
+{{< include _generated/research.md >}}

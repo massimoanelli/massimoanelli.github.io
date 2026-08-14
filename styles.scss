@@ -1,0 +1,180 @@
+/*-- scss:defaults --*/
+
+// Bootstrap variable overrides. These must live in the defaults layer so they
+// are set before Bootstrap's own stylesheet is compiled.
+
+$font-family-sans-serif: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif !default;
+$font-family-serif:      "Source Serif 4", "Charter", Georgia, serif !default;
+
+$body-color:  #1a1a1a !default;
+$link-color:  #14507d !default;
+$body-bg:     #ffffff !default;
+
+$font-size-root: 17px !default;
+$line-height-base: 1.65 !default;
+
+$navbar-bg: #ffffff !default;
+$navbar-fg: #1a1a1a !default;
+
+
+/*-- scss:rules --*/
+
+/* ---------------------------------------------------------------------------
+   massimoanelli.com — typography and research-listing styles
+   --------------------------------------------------------------------------- */
+
+:root {
+  --ink:        #1a1a1a;
+  --ink-soft:   #55585c;
+  --ink-faint:  #7b7f85;
+  --rule:       #e3e5e8;
+  --accent:     #14507d;
+  --accent-soft:#eef4f9;
+}
+
+body {
+  font-family: "Source Serif 4", "Charter", Georgia, serif;
+  color: var(--ink);
+}
+
+.navbar,
+h1, h2, h3,
+.status, .cv-button, .more-link {
+  font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+main {
+  max-width: 46rem;
+}
+
+/* --- headings ------------------------------------------------------------ */
+
+h1.title {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.15rem;
+}
+
+.subtitle {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-top: 2.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 {
+  font-size: 1.04rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.9rem;
+  margin-bottom: 0.3rem;
+}
+
+h2 a, h3 a {
+  color: var(--ink);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+}
+
+/* --- home page profile block --------------------------------------------- */
+
+.profile {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin: 1.5rem 0 1rem;
+}
+
+.profile-photo {
+  width: 172px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.profile-text {
+  flex: 1;
+
+  p:first-child { margin-top: 0; }
+}
+
+@media (max-width: 640px) {
+  .profile { flex-direction: column; gap: 1.25rem; }
+  .profile-photo { width: 140px; }
+}
+
+/* --- publication entries -------------------------------------------------- */
+
+.status {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.14rem 0.5rem;
+  border-radius: 2px;
+  margin-top: 0.15rem;
+}
+
+.status-accepted  { background: #e6f2ea; color: #1d6b3e; }
+.status-rr        { background: var(--accent-soft); color: var(--accent); }
+.status-submitted { background: #f2f2f3; color: var(--ink-soft); }
+
+.award, .media, .funding {
+  display: block;
+  font-size: 0.87rem;
+  color: var(--ink-faint);
+}
+
+.award { color: #8a6111; }
+
+/* --- links and buttons ---------------------------------------------------- */
+
+a { text-underline-offset: 2px; }
+
+.more-link {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.cv-button {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff !important;
+  font-weight: 500;
+  padding: 0.55rem 1.15rem;
+  border-radius: 3px;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+
+  &:hover { background: #0f3f63; }
+}
+
+.contact-block {
+  border-left: 3px solid var(--rule);
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* --- footer --------------------------------------------------------------- */
+
+.nav-footer {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  border-top: 1px solid var(--rule);
+}

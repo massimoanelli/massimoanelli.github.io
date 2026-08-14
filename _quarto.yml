@@ -1,0 +1,51 @@
+project:
+  type: website
+  output-dir: _site
+  # Regenerates the publication lists from publications.bib on every render,
+  # so `quarto render` and `quarto preview` are always in sync with the .bib.
+  pre-render: scripts/build_publications.py
+  # NOTE: CNAME is deliberately NOT shipped yet. Publishing it sets the custom
+  # domain on GitHub Pages, which redirects massimoanelli.github.io to
+  # www.massimoanelli.com — still served by Google Sites. Uncomment at cutover,
+  # once the DNS record has been switched.
+  # resources:
+  #   - CNAME
+
+website:
+  title: "Massimo Anelli"
+  site-url: "https://www.massimoanelli.com"
+  description: "Associate Professor of Economics, Bocconi University"
+  favicon: images/favicon.png
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: media.qmd
+        text: "Policy & Media"
+      - href: teaching.qmd
+        text: Teaching
+      - href: ai-society.qmd
+        text: "AI & Society"
+      - href: cv.qmd
+        text: CV
+    right:
+      - icon: envelope
+        href: mailto:massimo.anelli@unibocconi.it
+        aria-label: Email
+      - icon: mortarboard-fill
+        href: https://scholar.google.com/citations?user=Qw3xQ0EAAAAJ
+        aria-label: Google Scholar
+      - icon: linkedin
+        href: https://www.linkedin.com/in/massimoanelli/
+        aria-label: LinkedIn
+  page-footer:
+    center: "© Massimo Anelli · Department of Social and Political Sciences, Bocconi University"
+
+format:
+  html:
+    theme: [cosmo, styles.scss]
+    toc: false
+    anchor-sections: false
+    link-external-newwindow: true
