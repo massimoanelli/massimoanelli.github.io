@@ -193,12 +193,25 @@ h2 a, h3 a {
   flex: 1;
   max-width: 46rem;
 
-  ol {
-    margin: -0.4rem 0 1rem;
-    padding-left: 2.4rem;
+  /* Minimal bullets: small accent-coloured dash, no default disc. */
+  ul {
+    list-style: none;
+    margin: -0.5rem 0 1rem;
+    padding-left: 0.2rem;
   }
 
-  li { margin: 0.1rem 0; }
+  li {
+    margin: 0.15rem 0;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+
+  li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+  }
 
   p:first-child { margin-top: 0; }
 }
