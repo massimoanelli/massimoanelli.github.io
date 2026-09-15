@@ -12,20 +12,22 @@ I am an Associate Professor in the Department of Social and Political Sciences
 at Bocconi University, where I direct the
 [AI in Social Science Research Lab (AISS)](ai-society.qmd).
 
-My research asks how technological change reshapes labor markets, families, and
-politics — and what that means for the people on the receiving end of it. I work
-on automation and artificial intelligence, migration, education, and the
-political consequences of economic shocks.
+My research studies:
+
+(i) how technological change reshapes labor markets, politics, and demography;
+(ii) emigration selection at origin;
+(iii) education;
+(iv) job amenities.
 
 I am a Research Fellow at [CESifo](https://www.cesifo.org/en),
 [IZA](http://www.iza.org/profile?key=21610), the
-[ROCKWOOL Foundation Berlin](https://www.rfberlin.com/),
-[IGIER](https://igier.unibocconi.eu/), and the
-[Dondena Centre](https://dondena.unibocconi.eu/).
+[ROCKWOOL Foundation Berlin](https://www.rfberlin.com/), the
+[Dondena Centre](https://dondena.unibocconi.eu/),
+[IGIER](https://igier.unibocconi.eu/),
+[Baffi Carefin](https://bafficarefin.unibocconi.eu/), and the
+[Fondazione Rodolfo DeBenedetti](https://www.frdb.org/en/).
 :::
 :::
-
-## New & Forthcoming
 
 {{< include _generated/featured.md >}}
 

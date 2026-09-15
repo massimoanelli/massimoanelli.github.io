@@ -45,6 +45,8 @@ website:
 format:
   html:
     theme: [cosmo, styles.scss]
+    # Full-width layout; styles.scss caps the content at a readable max width.
+    page-layout: full
     toc: false
     anchor-sections: false
     link-external-newwindow: true

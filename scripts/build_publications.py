@@ -6,8 +6,8 @@ Quarto renders .bib files into flat reference lists; it has no native way to
 group by a custom field or attach status badges. So this script parses the .bib
 and emits two markdown partials that index.qmd and research.qmd include:
 
-    _generated/featured.md   -> the "New & Forthcoming" block on the home page
-    _generated/research.md   -> the full list, grouped by theme
+    _generated/featured.md   -> home page: publications and working papers, two columns
+    _generated/research.md   -> full list, one column per research area
 
 It runs automatically as a `pre-render` step (see _quarto.yml), so editing
 publications.bib and re-rendering is the whole workflow. No dependencies beyond
@@ -15,7 +15,6 @@ the standard library.
 """
 
 import re
-import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,10 +28,6 @@ THEMES = [
     ("health-ageing", "Health and Ageing"),
     ("education", "Education and Human Capital"),
 ]
-
-# Working papers sort above published work within a theme.
-KIND_RANK = {"unpublished": 0, "article": 1, "incollection": 2}
-
 
 def parse_bib(text):
     """Minimal BibTeX parser. Returns a list of dicts with 'kind' and 'key'."""
@@ -77,14 +72,16 @@ def latex_to_text(s):
 
 
 def coauthors(author_field):
-    """'Anelli, Massimo and Peri, Giovanni' -> 'with Giovanni Peri'."""
+    """'Anelli, Massimo and Peri, Giovanni' -> 'with G. Peri' (first initial only)."""
     names = [a.strip() for a in author_field.split(" and ") if a.strip()]
     others = []
     for n in names:
         if n.startswith("Anelli,"):
             continue
         surname, _, given = n.partition(",")
-        others.append(f"{given.strip()} {surname.strip()}".strip())
+        given = given.strip()
+        initial = f"{given[0]}. " if given else ""
+        others.append(f"{initial}{surname.strip()}")
     if not others:
         return ""
     if len(others) == 1:
@@ -103,6 +100,8 @@ def outlet(e):
             if e.get("number"):
                 vol += f"({e['number']})"
             bits.append(vol)
+        elif e.get("number"):
+            bits.append(f"no. {e['number']}")
         if e.get("pages"):
             bits.append(latex_to_text(e["pages"]))
         if e.get("year"):
@@ -128,37 +127,40 @@ def badge(status):
     return f'<span class="status status-{cls}">{status}</span>'
 
 
-def render(e, featured=False):
+def render(e, extras=True):
+    """A single entry as one paragraph with hard line breaks (trailing two
+    spaces), so the title, authors, venue and badge stay visually together."""
     title = latex_to_text(e.get("title", ""))
     url = e.get("url") or (f"https://doi.org/{e['doi']}" if e.get("doi") else "")
     head = f"[{title}]({url})" if url else title
 
-    lines = [f"### {head}" if not featured else f"**{head}**", ""]
+    lines = [f"[{head}]{{.pub-title}}  "]
 
     meta = coauthors(e.get("author", ""))
     if meta:
-        lines.append(f"{meta}  ")
+        lines.append(f'<span class="pub-authors">{meta}</span>  ')
 
     venue = outlet(e)
     if venue:
-        lines.append(f"{venue}  ")
+        lines.append(f'<span class="pub-venue">{venue}</span>  ')
 
     if e.get("status"):
         lines.append(badge(latex_to_text(e["status"])) + "  ")
 
-    if not featured:
-        if e.get("award"):
-            lines.append(f'<span class="award">{latex_to_text(e["award"])}</span>  ')
+    # Awards are shown everywhere, including the compact homepage entries.
+    if e.get("award"):
+        lines.append(f'<span class="status status-award">🏆 {latex_to_text(e["award"])}</span>  ')
+
+    if extras:
         if e.get("media"):
             lines.append(f'<span class="media">Coverage: {latex_to_text(e["media"])}</span>  ')
-        if e.get("funding"):
-            lines.append(f'<span class="funding">Funded by {latex_to_text(e["funding"])}</span>  ')
 
-    lines.append("")
-    return "\n".join(lines)
+    # Drop the hard break on the last line so no empty line trails the entry.
+    lines[-1] = lines[-1].rstrip()
+    return "\n".join(lines) + "\n"
 
 
-def sort_key(e):
+def date_key(e):
     try:
         year = int(e.get("year", "0"))
     except ValueError:
@@ -167,53 +169,90 @@ def sort_key(e):
         month = int(e.get("month", "0"))
     except ValueError:
         month = 0
-    rank = 3 if e.get("category") == "italian" else KIND_RANK.get(e["kind"], 9)
-    return (rank, -year, -month)
+    return (-year, -month)
+
+
+def stage(e):
+    """How far along a paper is. Status beats kind: an accepted working paper
+    is a forthcoming publication, whatever its BibTeX entry type says."""
+    s = e.get("status", "").lower()
+    if "accepted" in s or "forthcoming" in s:
+        return 0
+    if "revise" in s:
+        return 1
+    if e["kind"] == "unpublished":
+        return 2
+    if e.get("category") == "italian":
+        return 5
+    return 3 if e["kind"] == "article" else 4
+
+
+def sort_key(e):
+    return (stage(e),) + date_key(e)
+
+
+def entry_div(e, compact=False):
+    """One entry wrapped in a Pandoc div, so it can sit inside a grid column."""
+    return "::: {.pub}\n" + render(e, extras=not compact) + "\n:::\n"
+
+
+def column(heading, blocks):
+    return "::: {.pub-col}\n\n" + f"## {heading}\n\n" + "\n".join(blocks) + "\n:::\n"
 
 
 def main():
     entries = parse_bib(BIB.read_text(encoding="utf-8"))
     OUT.mkdir(exist_ok=True)
 
-    # --- Home page: "New & Forthcoming" -------------------------------------
-    # Ordered by how far along the paper is, not by date: an acceptance at a top
-    # journal is the headline even when the working paper itself is years old.
-    def news_rank(e):
-        s = e.get("status", "").lower()
-        if "accepted" in s:
-            return 0
-        if "revise" in s:
-            return 1
-        if e["kind"] == "unpublished":
-            return 2
-        return 3
+    # --- Home page: two columns ---------------------------------------------
+    # Left: forthcoming papers, then the most recent international articles.
+    # Right: working papers, R&Rs first, then submitted or featured drafts.
+    # Italian-journal articles stay on the Research page only.
+    forthcoming = sorted((e for e in entries if stage(e) == 0 and e.get("category") != "italian"),
+                         key=date_key)
+    recent_articles = sorted((e for e in entries if stage(e) == 3), key=date_key)[:3]
+    pubs = forthcoming + recent_articles
 
-    feat = [e for e in entries if e.get("featured", "").lower() == "yes"]
-    feat.sort(key=lambda e: (news_rank(e), sort_key(e)[1], sort_key(e)[2]))
-    body = "\n".join(render(e, featured=True) for e in feat)
-    (OUT / "featured.md").write_text(body, encoding="utf-8")
+    wps = [e for e in entries if stage(e) == 1
+           or (stage(e) == 2 and not e.get("status", "").lower().startswith("draft")
+               and (e.get("status") or e.get("featured", "").lower() == "yes"))]
+    wps.sort(key=sort_key)
 
-    # --- Research page: everything, grouped by theme ------------------------
-    chunks = []
+    home = ("::: {.pub-grid .pub-grid-2}\n\n"
+            + column("Forthcoming & Recent Publications", [entry_div(e, compact=True) for e in pubs])
+            + "\n"
+            + column("Working Papers", [entry_div(e, compact=True) for e in wps])
+            + "\n:::\n")
+    (OUT / "featured.md").write_text(home, encoding="utf-8")
+
+    # --- Research page: one column per area ---------------------------------
+    # Inside each area: forthcoming and R&R, then working papers, then publications.
+    groups = [("Forthcoming & Revise and Resubmit", {0, 1}),
+              ("Working Papers", {2}),
+              ("Publications", {3, 4, 5})]
+    cols = []
     seen = set()
-    for slug, heading in THEMES:
-        group = [e for e in entries if e.get("theme") == slug]
-        if not group:
+    themes = THEMES + [("__other__", "Other")]
+    for slug, heading in themes:
+        if slug == "__other__":
+            members = [e for e in entries if e["key"] not in seen]
+        else:
+            members = [e for e in entries if e.get("theme") == slug]
+        if not members:
             continue
-        group.sort(key=sort_key)
-        seen.update(e["key"] for e in group)
-        chunks.append(f"## {heading}\n")
-        chunks.extend(render(e) for e in group)
+        seen.update(e["key"] for e in members)
+        blocks = []
+        for label, stages in groups:
+            sub = sorted((e for e in members if stage(e) in stages), key=sort_key)
+            if sub:
+                blocks.append(f"### {label}\n")
+                blocks.extend(entry_div(e) for e in sub)
+        cols.append(column(heading, blocks))
 
-    # Anything with a missing or unrecognised theme still shows up.
-    rest = [e for e in entries if e["key"] not in seen]
-    if rest:
-        rest.sort(key=sort_key)
-        chunks.append("## Other\n")
-        chunks.extend(render(e) for e in rest)
-
-    (OUT / "research.md").write_text("\n".join(chunks), encoding="utf-8")
-    print(f"[build_publications] {len(entries)} entries -> {len(feat)} featured")
+    research = "::: {.pub-grid .pub-grid-3}\n\n" + "\n".join(cols) + "\n:::\n"
+    (OUT / "research.md").write_text(research, encoding="utf-8")
+    print(f"[build_publications] {len(entries)} entries -> home: {len(pubs)} publications, "
+          f"{len(wps)} working papers")
 
 
 if __name__ == "__main__":

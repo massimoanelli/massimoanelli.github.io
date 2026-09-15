@@ -43,9 +43,78 @@ h1, h2, h3,
   font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-main {
-  max-width: 46rem;
+/* page-layout: full lets the content span the window; cap it so lines stay
+   readable on wide monitors, and keep a gutter on small screens. */
+main.content {
+  max-width: 1240px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
+
+/* Prose pages (Teaching, Media, CV, AI & Society) stay at a comfortable measure. */
+main.content > p,
+main.content > h2,
+main.content > h3,
+main.content > .callout,
+main.content > .quarto-figure,
+main.content > ul,
+main.content > .contact-block {
+  max-width: 50rem;
+}
+
+/* --- publication grids ---------------------------------------------------- */
+
+.pub-grid {
+  display: grid;
+  gap: 1.25rem 3rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.pub-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pub-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+@media (max-width: 1100px) {
+  .pub-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .pub-grid-2,
+  .pub-grid-3 { grid-template-columns: minmax(0, 1fr); }
+}
+
+.pub-col > h2 {
+  margin-top: 0;
+}
+
+.pub-col > h3 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 1.6rem 0 0.2rem;
+}
+
+.pub {
+  margin-top: 1rem;
+  line-height: 1.45;
+  font-size: 0.95rem;
+
+  p { margin: 0; }
+}
+
+.pub-title {
+  font-weight: 600;
+
+  a { color: var(--ink); font-weight: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); text-decoration: underline; }
+}
+
+.pub-authors { color: var(--ink-soft); }
+.pub-venue   { color: var(--ink-soft); font-size: 0.9rem; }
 
 /* --- headings ------------------------------------------------------------ */
 
@@ -105,6 +174,14 @@ h2 a, h3 a {
 
 .profile-text {
   flex: 1;
+  max-width: 46rem;
+
+  ol {
+    margin: -0.4rem 0 1rem;
+    padding-left: 2.4rem;
+  }
+
+  li { margin: 0.1rem 0; }
 
   p:first-child { margin-top: 0; }
 }
@@ -130,6 +207,10 @@ h2 a, h3 a {
 .status-accepted  { background: #e6f2ea; color: #1d6b3e; }
 .status-rr        { background: var(--accent-soft); color: var(--accent); }
 .status-submitted { background: #f2f2f3; color: var(--ink-soft); }
+.status-award     { background: #fbf1d9; color: #7a5410; }
+
+/* Stacked badges (status + award) need a little air between them. */
+.status + br + .status { margin-top: 0.3rem; }
 
 .award, .media, .funding {
   display: block;
