@@ -89,7 +89,7 @@ main.content:has(.pub-grid-4) { max-width: 1440px; }
   .pub-grid-4 { grid-template-columns: minmax(0, 1fr); }
 }
 
-.pub-col > h2 {
+.pub-col h2 {
   margin-top: 0;
 }
 
@@ -127,7 +127,7 @@ main.content:has(.pub-grid-4) { max-width: 1440px; }
   .pub-venue { font-size: 0.76rem; }
   .status { font-size: 0.62rem; }
   .media { font-size: 0.74rem; }
-  .pub-col > h2 { font-size: 1.05rem; }
+  .pub-col h2 { font-size: 1.05rem; }
 }
 
 .pub-authors { color: var(--ink-soft); }
