@@ -25,8 +25,8 @@ OUT = ROOT / "_generated"
 THEMES = [
     ("tech-politics", "Technology, Politics and Society"),
     ("migration", "Migration Selection"),
-    ("health-ageing", "Health and Ageing"),
     ("education", "Education and Human Capital"),
+    ("health-ageing", "Health and Ageing"),
 ]
 
 def parse_bib(text):

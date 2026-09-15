@@ -2,30 +2,43 @@
 title: "Policy & Media"
 ---
 
-![Presenting at *New Skills at Work* (JPMorgan Chase & Co.), Bocconi University, February 2018](images/talk-new-skills-at-work-2018.jpg){fig-alt="Massimo Anelli presenting a bar chart of fields of study at the New Skills at Work event"}
+![Presenting at *New Skills at Work* (JPMorgan Chase & Co.), Bocconi University, February 2018](images/talk-new-skills-at-work-2018.jpg){.media-photo fig-align="left" fig-alt="Massimo Anelli presenting a bar chart of fields of study at the New Skills at Work event"}
 
 Selected coverage of my research in the international and Italian press.
 
 ## International
 
-**The Washington Post** — "A Crisis of Masculinity as Robots Replace Men"
-**The Washington Post** — "Italy just voted for two very different kinds of populism"
-**The New York Times** — "Industrial Revolutions Are Political Wrecking Balls"
-**Bloomberg** — "A Crisis of Masculinity as Robots Replace Men"
-**Frankfurter Allgemeine Zeitung** — "Wie Roboter Arbeitswelt und Liebesleben verändern"
-**Metro** — "Workplace robots close the gender pay gap because they mostly take men's jobs"
-**UNILAD** — "How Work Robots Are Decreasing The Gender Pay Gap"
+::: {.press-list}
+- **Bloomberg** — [A Crisis of Masculinity as Robots Replace Men](https://www.bloomberg.com/opinion/articles/2021-12-07/industrial-robots-are-a-boon-but-they-are-creating-a-crisis-of-masculinity)
+- **The Washington Post** — [A Crisis of Masculinity as Robots Replace Men](https://www.washingtonpost.com/business/energy/a-crisis-of-masculinity-as-robots-replace-men/2021/12/07/1a7c959e-572c-11ec-8396-5552bef55c3c_story.html)
+- **The Washington Post** — [Italy just voted for two very different kinds of populism](https://www.washingtonpost.com/news/monkey-cage/wp/2018/03/28/italy-just-voted-for-two-very-different-kinds-of-populism/)
+- **The New York Times** — Industrial Revolutions Are Political Wrecking Balls
+- **Frankfurter Allgemeine Zeitung** — [Wie Roboter Arbeitswelt und Liebesleben verändern](https://www.faz.net/aktuell/wirtschaft/wie-roboter-arbeitswelt-und-liebesleben-veraendern-17665874.html)
+- **Metro** — [Workplace robots close the gender pay gap because they mostly take men's jobs](https://metro.co.uk/2021/11/29/robots-close-the-gender-pay-gap-because-they-mostly-take-mens-jobs-15680478/)
+- **PsyPost** — [Exposure to automation boosts support for the radical right, study finds](https://www.psypost.org/2022/02/exposure-to-automation-boosts-support-for-the-radical-right-study-finds-62650)
+- **UNILAD** — How Work Robots Are Decreasing The Gender Pay Gap
+:::
 
 ## Italy
 
-**Corriere della Sera** — "L'Italia dei figli lontani: non è solo nostalgia. Così invecchia la politica e cresce la corruzione"
-**La Repubblica** — "I lavoratori 'cacciati' dai robot hanno più probabilità di rimanere single e di votare per l'estrema destra"
-**La Repubblica** — "Ma servono nuovi incentivi e riforme serie"
-**Il Sole 24 Ore** — "Dalla fuga dei cervelli alla circolazione, un passo per lo sviluppo del Paese"
-**Il Fatto Quotidiano** — "Robot, import cinese e giovani inattivi dietro il voto Lega-M5S"
+::: {.press-list}
+- **Corriere della Sera** — [L'Italia dei figli lontani: non è solo nostalgia. «Così invecchia la politica e cresce la corruzione»](http://www.corriere.it/scuola/studiare-e-lavorare-all-estero/notizie/italia-figli-lontani-non-solo-nostalgia-cosi-invecchia-politica-cresce-corruzione-1317f916-a4f6-11e7-ac7b-c4dea2ad0535.shtml)
+- **Corriere della Sera** — [Troppi «dottori» senza lavoro: le scelte sbagliate degli universitari italiani](https://www.corriere.it/scuola/universita/19_febbraio_01/troppi-dottori-senza-lavoro-laureati-italiani-sbagliano-scelte-formazione-06d4c11e-262f-11e9-9b5e-1a58eb1d569a.shtml)
+- **Corriere della Sera** — [Iscrizioni: «sbagliare la scelta delle superiori si paga per tutta la vita (lavorativa)»](https://www.corriere.it/scuola/secondaria/20_gennaio_22/iscrizioni-sbagliare-scelta-superiori-si-paga-tutta-vita-lavorativa-252b7840-3d37-11ea-a086-4a0558b00e99.shtml)
+- **Corriere della Sera** — [La scelta della scuola superiore: Italia, Estonia e Irlanda i Paesi meno attenti](https://www.corriere.it/economia/lavoro/cards/scelta-scuola-superiore-italia-estonia-irlanda-paesi-meno-attenti/migliore-qualita-dell-informazione-aiuterebbe-famiglie-scegliere-piu-consapevolmente.shtml)
+- **La Repubblica** — [I lavoratori "cacciati" dai robot hanno più probabilità di rimanere single e di votare per l'estrema destra](https://www.repubblica.it/economia/2021/11/22/news/robot-327281089/)
+- **La Repubblica** — Ma servono nuovi incentivi e riforme serie
+- **Il Sole 24 Ore** — [Dalla fuga dei cervelli alla circolazione, un passo per lo sviluppo del Paese](https://www.ilsole24ore.com/art/dalla-fuga-cervelli-circolazione-passo-lo-sviluppo-paese-AEZAuRnC)
+- **Il Sole 24 Ore** — [Perché i giovani fanno fatica a trovare lavoro in Italia](https://www.ilsole24ore.com/art/perche-giovani-fanno-fatica-trovare-lavoro-italia-AESVfiKH)
+- **Il Fatto Quotidiano** — [Robot, import cinese e giovani inattivi dietro il voto Lega-M5S](https://www.ilfattoquotidiano.it/premium/articoli/robot-import-cinese-e-giovani-inattivi-dietro-il-voto-lega-m5s/)
+- **Vanity Fair** — [Laureati inutili e disoccupati? Ne siamo pieni!](https://www.vanityfair.it/mybusiness/news-mybusiness/2019/05/11/laurea-lavoro-occupazione-skill-mismatch)
+:::
 
 ## Policy commentary
 
-**IZA World of Labor** — commentary on *Robots Replacing Trade Unions*
-**Royal Economic Society** — "Choice of university subject & later life outcomes"
-**Oxford University Press Blog** — "Emigration and Political Change"
+::: {.press-list}
+- **IZA World of Labor** — [Robots, restructuring, and union retreat: How automation alters worker organization](https://wol.iza.org/opinions/robots-restructuring-and-union-retreat)
+- **Population Europe** — [Missing New Births?](https://population-europe.eu/research/policy-insights/missing-new-births)
+- **Oxford University Press Blog** — [Emigration and political change](https://blog.oup.com/2017/12/emigration-political-change-economics/)
+- **Royal Economic Society** — Choice of university subject & later life outcomes
+:::

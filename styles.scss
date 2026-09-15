@@ -93,7 +93,7 @@ main.content:has(.pub-grid-4) { max-width: 1440px; }
   margin-top: 0;
 }
 
-.pub-col > h3 {
+.pub-col h3 {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -115,6 +115,15 @@ main.content:has(.pub-grid-4) { max-width: 1440px; }
 
   a { color: var(--ink); font-weight: inherit; text-decoration: none; }
   a:hover { color: var(--accent); text-decoration: underline; }
+}
+
+/* Research page: smaller type so more of each title fits on a line in four columns. */
+.pub-grid-4 {
+  .pub { font-size: 0.8rem; line-height: 1.4; margin-top: 0.8rem; }
+  .pub-venue { font-size: 0.76rem; }
+  .status { font-size: 0.62rem; padding: 0.1rem 0.4rem; }
+  .media { font-size: 0.74rem; }
+  .pub-col > h2 { font-size: 1.05rem; }
 }
 
 .pub-authors { color: var(--ink-soft); }
@@ -255,6 +264,24 @@ a { text-underline-offset: 2px; }
   color: var(--ink-soft);
   font-size: 0.95rem;
 }
+
+/* --- Policy & Media page -------------------------------------------------- */
+
+img.media-photo { max-width: 26rem; height: auto; border-radius: 3px; }
+
+.press-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0;
+}
+
+.press-list li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.45;
+}
+
+.press-list li:last-child { border-bottom: none; }
 
 /* --- footer --------------------------------------------------------------- */
 
