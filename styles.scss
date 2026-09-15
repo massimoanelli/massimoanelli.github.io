@@ -93,6 +93,10 @@ main.content:has(.pub-grid-4) { max-width: 1440px; }
   margin-top: 0;
 }
 
+/* A second area heading stacked inside a column (Italian journals). */
+.pub-subsection h2 { margin-top: 2.5rem; }
+.pub-grid-4 .pub-subsection h2 { font-size: 1.05rem; }
+
 .pub-col h3 {
   font-size: 0.78rem;
   font-weight: 600;

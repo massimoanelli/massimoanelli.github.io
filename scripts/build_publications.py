@@ -227,17 +227,21 @@ def main():
 
     # --- Research page: one column per area ---------------------------------
     # Inside each area: forthcoming and R&R, then working papers, then publications.
+    # Italian-journal articles are pulled out of the areas into their own section,
+    # stacked under the last area (Health and Ageing) in the same column.
     groups = [("Forthcoming & Revise and Resubmit", {0, 1}),
               ("Working Papers", {2}),
-              ("Publications", {3, 4, 5})]
+              ("Publications", {3, 4})]
+    italian = sorted((e for e in entries if e.get("category") == "italian"), key=date_key)
+    rest = [e for e in entries if e.get("category") != "italian"]
     cols = []
-    seen = set()
+    seen = {e["key"] for e in italian}
     themes = THEMES + [("__other__", "Other")]
     for slug, heading in themes:
         if slug == "__other__":
-            members = [e for e in entries if e["key"] not in seen]
+            members = [e for e in rest if e["key"] not in seen]
         else:
-            members = [e for e in entries if e.get("theme") == slug]
+            members = [e for e in rest if e.get("theme") == slug]
         if not members:
             continue
         seen.update(e["key"] for e in members)
@@ -247,6 +251,9 @@ def main():
             if sub:
                 blocks.append(f"### {label}\n")
                 blocks.extend(entry_div(e) for e in sub)
+        if slug == THEMES[-1][0] and italian:
+            blocks.append("::: {.pub-subsection}\n\n## Publications in Italian Journals\n\n"
+                          + "\n".join(entry_div(e) for e in italian) + "\n:::\n")
         cols.append(column(heading, blocks))
 
     research = "::: {.pub-grid .pub-grid-4}\n\n" + "\n".join(cols) + "\n:::\n"
