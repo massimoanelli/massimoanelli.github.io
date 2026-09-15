@@ -1,17 +1,30 @@
 ---
-title: "AI & Society"
+title: "AI in Social Sciences"
 ---
 
-## AI in Social Science Research Lab (AISS)
+## Artificial Intelligence in Social Sciences Research Lab (AISS)
 
-Since 2026 I direct the AI in Social Science Research Lab (AISS) at Bocconi
-University.
+I am the Scientific Director of [AISS](https://aiss.self.bocconi.platform.sparkfabrik.cloud/),
+Bocconi University's lab for AI methods in social science research. The lab was
+created under the university's 2026–2030 Strategic Plan and is open to
+researchers from every Bocconi department and research centre.
 
-::: {.callout-note appearance="simple"}
-This page is a placeholder. Tell me what AISS's public description should say
-and I will write it properly — nothing beyond the lab's name and your role is
-stated here yet.
-:::
+AI is changing what social scientists can measure and study. Text, images, audio
+and administrative records that once needed years of manual coding can now become
+structured data, and questions that were out of reach become answerable. AISS
+helps Bocconi researchers work at that frontier through two pillars:
+
+- **Projects Incubator.** Support for research that AI makes possible, not just
+  faster: computing resources, research assistance and methods advice for
+  selected projects.
+- **AI Clinic.** Open to every Bocconi researcher: help choosing the right method,
+  tools and computing resources for a research question.
+
+The lab is interdisciplinary by design, so methods developed in one field travel
+to others. It is overseen by a Steering Committee and an International Advisory
+Board.
+
+[Visit the AISS website →](https://aiss.self.bocconi.platform.sparkfabrik.cloud/){.more-link}
 
 ## Bocconi AI and Society Conference
 

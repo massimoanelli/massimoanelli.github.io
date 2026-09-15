@@ -21,7 +21,7 @@ website:
       - href: teaching.qmd
         text: Teaching
       - href: ai-society.qmd
-        text: "AI & Society"
+        text: "AI in Social Sciences"
       - href: cv.qmd
         text: CV
     right:

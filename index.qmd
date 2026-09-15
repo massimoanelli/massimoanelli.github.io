@@ -10,7 +10,7 @@ pagetitle: "Massimo Anelli"
 ::: {.profile-text}
 I am an Associate Professor in the Department of Social and Political Sciences
 at Bocconi University, where I direct the
-[AI in Social Science Research Lab (AISS)](ai-society.qmd).
+[AI in Social Sciences Research Lab (AISS)](ai-society.qmd).
 
 My research interests include:
 
