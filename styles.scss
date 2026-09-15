@@ -121,7 +121,7 @@ main.content:has(.pub-grid-4) { max-width: 1440px; }
 .pub-grid-4 {
   .pub { font-size: 0.8rem; line-height: 1.4; margin-top: 0.8rem; }
   .pub-venue { font-size: 0.76rem; }
-  .status { font-size: 0.62rem; padding: 0.1rem 0.4rem; }
+  .status { font-size: 0.62rem; }
   .media { font-size: 0.74rem; }
   .pub-col > h2 { font-size: 1.05rem; }
 }
@@ -206,24 +206,19 @@ h2 a, h3 a {
 
 /* --- publication entries -------------------------------------------------- */
 
+/* Status and awards: coloured text only, no background boxes. */
 .status {
-  display: inline-block;
+  display: inline;
   font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  padding: 0.14rem 0.5rem;
-  border-radius: 2px;
-  margin-top: 0.15rem;
 }
 
-.status-accepted  { background: #e6f2ea; color: #1d6b3e; }
-.status-rr        { background: var(--accent-soft); color: var(--accent); }
-.status-submitted { background: #f2f2f3; color: var(--ink-soft); }
-.status-award     { background: #fbf1d9; color: #7a5410; }
-
-/* Stacked badges (status + award) need a little air between them. */
-.status + br + .status { margin-top: 0.3rem; }
+.status-accepted  { color: #1d6b3e; }
+.status-rr        { color: var(--accent); }
+.status-submitted { color: var(--ink-faint); }
+.status-award     { color: #9a6a0f; }
 
 .award, .media, .funding {
   display: block;
