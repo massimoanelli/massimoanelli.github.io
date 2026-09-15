@@ -12,9 +12,9 @@ I am an Associate Professor in the Department of Social and Political Sciences
 at Bocconi University, where I direct the
 [AI in Social Science Research Lab (AISS)](ai-society.qmd).
 
-My research examines:
+My research interests include:
 
-- how technological change reshapes labor markets, politics, and demography
+- technological change and its effects on labor markets, politics, and demography
 - emigration selection at origin
 - education
 - job amenities
