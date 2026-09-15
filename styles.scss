@@ -216,10 +216,7 @@ h2 a, h3 a {
   p:first-child { margin-top: 0; }
 }
 
-@media (max-width: 640px) {
-  .profile { flex-direction: column; gap: 1.25rem; }
-  .profile-photo { width: 140px; }
-}
+
 
 /* --- publication entries -------------------------------------------------- */
 
@@ -301,4 +298,63 @@ img.media-photo { max-width: 26rem; height: auto; border-radius: 3px; }
   font-size: 0.85rem;
   color: var(--ink-faint);
   border-top: 1px solid var(--rule);
+}
+
+/* ---------------------------------------------------------------------------
+   Phones only. Everything below applies under 640px wide, so desktop and
+   laptop rendering is unaffected.
+   --------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  :root { font-size: 15px; }
+
+  /* Quarto's grid already adds a side gutter; drop our extra padding so the
+     text column uses the width of the screen. */
+  main.content {
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 0;   /* stop the grid column growing to the photo's natural width */
+  }
+
+  .quarto-figure, figure { min-width: 0; max-width: 100%; }
+
+  h1.title { font-size: 1.7rem; }
+  .subtitle { font-size: 0.95rem; line-height: 1.4; }
+  #title-block-header { margin-bottom: 0.5rem; }
+
+  h2 { margin-top: 2rem; font-size: 1.1rem; }
+
+  /* Home: small photo beside the first lines of the bio instead of a large
+     stacked photo that fills the first screen. */
+  .profile {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .profile-photo {
+    float: left;
+    width: 92px;
+    margin: 0.3rem 1rem 0.5rem 0;
+  }
+
+  .profile-text {
+    max-width: none;
+    ul { clear: left; margin-top: -0.3rem; }
+  }
+
+  .pub-grid { margin-top: 1rem; gap: 0.5rem; }
+  .pub { font-size: 0.93rem; }
+  .pub-grid-4 .pub { font-size: 0.93rem; }
+  .pub-grid-4 .pub-venue { font-size: 0.86rem; }
+  .pub-grid-4 .status { font-size: 0.7rem; }
+  .pub-col h3 { margin-top: 1.2rem; }
+  .pub-subsection h2 { margin-top: 2rem; }
+
+  /* Policy & Media: outlet name on its own line above the headline. */
+  .press-list li strong { display: block; }
+  .press-list .dash { display: none; }
+  .press-list li { padding: 0.55rem 0; }
+
+  img.media-photo { max-width: 100%; }
+
+  .nav-footer { font-size: 0.75rem; }
 }
