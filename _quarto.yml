@@ -13,9 +13,11 @@ project:
 
 website:
   title: "Massimo Anelli"
-  site-url: "https://www.massimoanelli.com"
+  # AT CUTOVER: change this to https://www.massimoanelli.com — `quarto publish`
+  # derives the Pages CNAME file from this value, so setting it early points the
+  # deploy at a domain that Google Sites is still serving.
+  site-url: "https://massimoanelli.github.io"
   description: "Associate Professor of Economics, Bocconi University"
-  favicon: images/favicon.png
   navbar:
     left:
       - href: index.qmd
@@ -35,11 +37,8 @@ website:
         href: mailto:massimo.anelli@unibocconi.it
         aria-label: Email
       - icon: mortarboard-fill
-        href: https://scholar.google.com/citations?user=Qw3xQ0EAAAAJ
+        href: https://scholar.google.com/citations?user=4CWV7jsAAAAJ
         aria-label: Google Scholar
-      - icon: linkedin
-        href: https://www.linkedin.com/in/massimoanelli/
-        aria-label: LinkedIn
   page-footer:
     center: "© Massimo Anelli · Department of Social and Political Sciences, Bocconi University"
 

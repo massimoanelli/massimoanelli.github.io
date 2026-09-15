@@ -11,3 +11,7 @@ Thumbs.db
 .DS_Store
 
 **/*.quarto_ipynb
+
+# Local-only: raw photo archive and Actions workflow (gh token lacks workflow scope)
+*.zip
+/.github/

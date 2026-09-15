@@ -119,7 +119,7 @@ def outlet(e):
 def badge(status):
     """Colour-code by how far along the paper is."""
     s = status.lower()
-    if s.startswith("accepted"):
+    if "accepted" in s or "forthcoming" in s:
         cls = "accepted"
     elif "revise" in s:
         cls = "rr"
@@ -167,7 +167,8 @@ def sort_key(e):
         month = int(e.get("month", "0"))
     except ValueError:
         month = 0
-    return (KIND_RANK.get(e["kind"], 9), -year, -month)
+    rank = 3 if e.get("category") == "italian" else KIND_RANK.get(e["kind"], 9)
+    return (rank, -year, -month)
 
 
 def main():
@@ -179,7 +180,7 @@ def main():
     # journal is the headline even when the working paper itself is years old.
     def news_rank(e):
         s = e.get("status", "").lower()
-        if s.startswith("accepted"):
+        if "accepted" in s:
             return 0
         if "revise" in s:
             return 1
