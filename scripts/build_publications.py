@@ -249,7 +249,7 @@ def main():
                 blocks.extend(entry_div(e) for e in sub)
         cols.append(column(heading, blocks))
 
-    research = "::: {.pub-grid .pub-grid-3}\n\n" + "\n".join(cols) + "\n:::\n"
+    research = "::: {.pub-grid .pub-grid-4}\n\n" + "\n".join(cols) + "\n:::\n"
     (OUT / "research.md").write_text(research, encoding="utf-8")
     print(f"[build_publications] {len(entries)} entries -> home: {len(pubs)} publications, "
           f"{len(wps)} working papers")

@@ -74,15 +74,19 @@ main.content > .contact-block {
 }
 
 .pub-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.pub-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pub-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 2.25rem; }
 
-@media (max-width: 1100px) {
-  .pub-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Four narrow columns need more room than prose pages: widen only the page
+   that contains the four-column grid. */
+main.content:has(.pub-grid-4) { max-width: 1440px; }
+
+@media (max-width: 1200px) {
+  .pub-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 720px) {
   .pub-grid-2,
-  .pub-grid-3 { grid-template-columns: minmax(0, 1fr); }
+  .pub-grid-4 { grid-template-columns: minmax(0, 1fr); }
 }
 
 .pub-col > h2 {
