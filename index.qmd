@@ -1,6 +1,6 @@
 ---
 title: "Massimo Anelli"
-subtitle: "Associate Professor, Department of Social and Political Sciences, Bocconi University"
+subtitle: "Associate Professor, Department of Social and Political Sciences, Bocconi University<br>Director of AISS — the <a href='ai-society.html'>AI in Social Sciences Research Lab</a>"
 pagetitle: "Massimo Anelli"
 ---
 
@@ -8,10 +8,6 @@ pagetitle: "Massimo Anelli"
 ![](images/profile.jpg){.profile-photo}
 
 ::: {.profile-text}
-I am an Associate Professor in the Department of Social and Political Sciences
-at Bocconi University, where I direct the
-[AI in Social Sciences Research Lab (AISS)](ai-society.qmd).
-
 My research interests include:
 
 - technological change and its effects on labor markets, politics, and demography
