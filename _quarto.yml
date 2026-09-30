@@ -42,3 +42,10 @@ format:
     toc: false
     anchor-sections: false
     link-external-newwindow: true
+    # Space Mono (display) + Source Serif 4 (prose). Without this the names in
+    # styles.scss fall back to whatever happens to be installed locally.
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Space+Mono:wght@400;700&display=swap">

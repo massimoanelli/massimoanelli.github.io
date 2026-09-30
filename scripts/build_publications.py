@@ -174,17 +174,21 @@ def date_key(e):
 
 def stage(e):
     """How far along a paper is. Status beats kind: an accepted working paper
-    is a forthcoming publication, whatever its BibTeX entry type says."""
+    is a forthcoming publication, whatever its BibTeX entry type says. A
+    *conditionally* accepted paper is not through yet, so it heads the working
+    papers rather than sitting with the forthcoming ones."""
     s = e.get("status", "").lower()
+    if "conditional" in s:
+        return 1
     if "accepted" in s or "forthcoming" in s:
         return 0
     if "revise" in s:
-        return 1
-    if e["kind"] == "unpublished":
         return 2
+    if e["kind"] == "unpublished":
+        return 3
     if e.get("category") == "italian":
-        return 5
-    return 3 if e["kind"] == "article" else 4
+        return 6
+    return 4 if e["kind"] == "article" else 5
 
 
 def sort_key(e):
@@ -206,15 +210,16 @@ def main():
 
     # --- Home page: two columns ---------------------------------------------
     # Left: forthcoming papers, then the most recent international articles.
-    # Right: working papers, R&Rs first, then submitted or featured drafts.
+    # Right: working papers, conditional acceptances first, then R&Rs, then
+    # submitted or featured drafts.
     # Italian-journal articles stay on the Research page only.
     forthcoming = sorted((e for e in entries if stage(e) == 0 and e.get("category") != "italian"),
                          key=date_key)
-    recent_articles = sorted((e for e in entries if stage(e) == 3), key=date_key)[:3]
+    recent_articles = sorted((e for e in entries if stage(e) == 4), key=date_key)[:3]
     pubs = forthcoming + recent_articles
 
-    wps = [e for e in entries if stage(e) == 1
-           or (stage(e) == 2 and not e.get("status", "").lower().startswith("draft")
+    wps = [e for e in entries if stage(e) in (1, 2)
+           or (stage(e) == 3 and not e.get("status", "").lower().startswith("draft")
                and (e.get("status") or e.get("featured", "").lower() == "yes"))]
     wps.sort(key=sort_key)
 
@@ -229,9 +234,9 @@ def main():
     # Inside each area: forthcoming and R&R, then working papers, then publications.
     # Italian-journal articles are pulled out of the areas into their own section,
     # stacked under the last area (Health and Ageing) in the same column.
-    groups = [("Forthcoming & Revise and Resubmit", {0, 1}),
-              ("Working Papers", {2}),
-              ("Publications", {3, 4})]
+    groups = [("Forthcoming & Revise and Resubmit", {0, 1, 2}),
+              ("Working Papers", {3}),
+              ("Publications", {4, 5})]
     italian = sorted((e for e in entries if e.get("category") == "italian"), key=date_key)
     rest = [e for e in entries if e.get("category") != "italian"]
     cols = []

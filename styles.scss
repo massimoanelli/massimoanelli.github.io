@@ -3,18 +3,19 @@
 // Bootstrap variable overrides. These must live in the defaults layer so they
 // are set before Bootstrap's own stylesheet is compiled.
 
-$font-family-sans-serif: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif !default;
+// Display face is a monospace (headings, navbar, labels); prose stays serif.
+$font-family-sans-serif: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace !default;
 $font-family-serif:      "Source Serif 4", "Charter", Georgia, serif !default;
 
-$body-color:  #1a1a1a !default;
-$link-color:  #14507d !default;
-$body-bg:     #ffffff !default;
+$body-color:  #1f1f1f !default;
+$link-color:  #234a6d !default;
+$body-bg:     #faf7f2 !default;
 
 $font-size-root: 17px !default;
 $line-height-base: 1.65 !default;
 
-$navbar-bg: #ffffff !default;
-$navbar-fg: #1a1a1a !default;
+$navbar-bg: #faf7f2 !default;
+$navbar-fg: #1f1f1f !default;
 
 
 /*-- scss:rules --*/
@@ -24,12 +25,14 @@ $navbar-fg: #1a1a1a !default;
    --------------------------------------------------------------------------- */
 
 :root {
-  --ink:        #1a1a1a;
-  --ink-soft:   #55585c;
-  --ink-faint:  #7b7f85;
-  --rule:       #e3e5e8;
-  --accent:     #14507d;
-  --accent-soft:#eef4f9;
+  --bg:         #faf7f2;   /* warm off-white paper */
+  --ink:        #1f1f1f;
+  --ink-soft:   #5a5350;
+  --ink-faint:  #857c77;
+  --rule:       #e4ded4;
+  --accent:     #234a6d;   /* ink blue: 8.6:1 on --bg, well past WCAG AA */
+  --accent-lt:  #a8bccd;   /* decorative only — underlines, borders */
+  --accent-soft:#eef2f6;
 }
 
 body {
@@ -39,8 +42,20 @@ body {
 
 .navbar,
 h1, h2, h3,
+.pub-col h3,
 .status, .cv-button, .more-link {
-  font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  letter-spacing: -0.012em;
+}
+
+/* The navbar sits on the same paper colour as the page; a hairline rule keeps
+   it separated without a hard edge. */
+.navbar {
+  border-bottom: 1px solid var(--rule);
+}
+
+.navbar .navbar-nav .nav-link {
+  font-size: 0.86rem;
 }
 
 /* page-layout: full lets the content span the window; cap it so lines stay
@@ -128,6 +143,17 @@ main.content:has(.pub-grid-4) { max-width: 1440px; }
   .status { font-size: 0.62rem; }
   .media { font-size: 0.74rem; }
   .pub-col h2 { font-size: 1.05rem; }
+
+  /* Area names wrap to two lines in narrow columns; reserve the second line
+     everywhere so the rules under the headings line up across the four. */
+  /* Not `> h2`: in a column that holds a second section, Pandoc nests the
+     heading one level deeper. */
+  .pub-col h2 {
+    line-height: 1.3;
+    min-height: 2.6em;   /* exactly two lines at the line-height above */
+  }
+
+  .pub-subsection h2 { min-height: 0; }
 }
 
 .pub-authors { color: var(--ink-soft); }
@@ -136,9 +162,9 @@ main.content:has(.pub-grid-4) { max-width: 1440px; }
 /* --- headings ------------------------------------------------------------ */
 
 h1.title {
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.15rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.35rem;
 }
 
 .subtitle {
@@ -149,7 +175,8 @@ h1.title {
 
 h2 {
   font-size: 1.18rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   letter-spacing: 0.01em;
   margin-top: 2.75rem;
   padding-bottom: 0.4rem;
@@ -158,7 +185,7 @@ h2 {
 
 h3 {
   font-size: 1.04rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.4;
   margin-top: 1.9rem;
   margin-bottom: 0.3rem;
@@ -184,8 +211,12 @@ h2 a, h3 a {
 }
 
 .profile-photo {
-  width: 172px;
-  border-radius: 3px;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center 18%;   /* keep the face centred in the circle */
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(45, 50, 60, 0.15);
   flex-shrink: 0;
 }
 
@@ -229,8 +260,8 @@ h2 a, h3 a {
   text-transform: uppercase;
 }
 
-.status-accepted  { color: #1d6b3e; }
-.status-rr        { color: var(--accent); }
+.status-accepted  { color: #2d6b45; }
+.status-rr        { color: #a2522b; }   /* rust, so it reads apart from the blue */
 .status-submitted { color: var(--ink-faint); }
 .status-award     { color: #9a6a0f; }
 
@@ -244,7 +275,29 @@ h2 a, h3 a {
 
 /* --- links and buttons ---------------------------------------------------- */
 
-a { text-underline-offset: 2px; }
+/* Scoped to the body text: the navbar and footer keep Bootstrap's own
+   link behaviour. */
+main.content a {
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--accent-lt);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+main.content a:hover {
+  color: var(--bg);
+  background-color: var(--accent);
+  text-decoration-color: transparent;
+}
+
+/* Publication titles stay ink-coloured: a grid of green links is unreadable. */
+.pub-title a:hover,
+.pub-col h2 a:hover,
+h2 a:hover, h3 a:hover {
+  color: var(--accent);
+  background: none;
+}
 
 .more-link {
   display: inline-block;
@@ -264,7 +317,7 @@ a { text-underline-offset: 2px; }
   text-decoration: none;
   margin-bottom: 1.5rem;
 
-  &:hover { background: #0f3f63; }
+  &:hover { background: #1a3a55; color: #fff !important; }
 }
 
 .contact-block {
@@ -276,7 +329,12 @@ a { text-underline-offset: 2px; }
 
 /* --- Policy & Media page -------------------------------------------------- */
 
-img.media-photo { max-width: 26rem; height: auto; border-radius: 3px; }
+img.media-photo {
+  max-width: 26rem;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(45, 50, 60, 0.13);
+}
 
 .press-list ul {
   list-style: none;
@@ -332,8 +390,9 @@ img.media-photo { max-width: 26rem; height: auto; border-radius: 3px; }
 
   .profile-photo {
     float: left;
-    width: 92px;
-    margin: 0.3rem 1rem 0.5rem 0;
+    width: 104px;
+    height: 104px;
+    margin: 0.3rem 1rem 0.6rem 0;
   }
 
   .profile-text {
@@ -341,7 +400,7 @@ img.media-photo { max-width: 26rem; height: auto; border-radius: 3px; }
     ul { clear: left; margin-top: -0.3rem; }
   }
 
-  .pub-grid { margin-top: 1rem; gap: 0.5rem; }
+  .pub-grid { margin-top: 1rem; gap: 2rem; }   /* stacked columns need air */
   .pub { font-size: 0.93rem; }
   .pub-grid-4 .pub { font-size: 0.93rem; }
   .pub-grid-4 .pub-venue { font-size: 0.86rem; }
